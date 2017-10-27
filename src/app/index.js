@@ -6,22 +6,40 @@ var createReactClass = require('create-react-class');
 var TodoComponent = createReactClass({
     getInitialState: function(){
         return {
-            todos: ['crush your enemies', 'see them driven before you', 'hear the lamentations of their women']
+            todos: ['crush your enemies', 'see them driven before you', 'hear the lamentations of their women'],
+            age: 30
         }
     },
     render: function(){
+        var todos = this.state.todos;
+        todos = todos.map(function(item, index){
+            return(
+                <TodoItem item={item} key={index} />
+            );
+        });
         return(
             <div id="todo-list">
-                <p>It's a list...of todos!</p>
+                <p>it's a list of todos!</p>
                 <ul>
-                    <li>{this.state.todos[0]}</li>
-                    <li>{this.state.todos[1]}</li>
-                    <li>{this.state.todos[2]}</li>
+                    {todos}
                 </ul>
             </div>
         );
     }// render
 });
 
+// TodoItem component
+var TodoItem = createReactClass({
+    render: function(){
+        return(
+            <li>
+                <div className="todo-item">
+                    <span className="item-name">{this.props.item}</span>
+                </div>
+            </li>
+        );
+    }
+});
+
 // Put component into HTML page
-ReactDOM.render(<TodoComponent/>, document.getElementById("todo-wrapper"));
+ReactDOM.render(<TodoComponent />, document.getElementById("todo-wrapper"));
