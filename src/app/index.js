@@ -1,6 +1,9 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var createReactClass = require('create-react-class');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import css from './css/index.css';
+
+// Module requires
+import TodoItem from './todo-item';
 
 // Create component
 class TodoComponent extends React.Component {
@@ -40,26 +43,26 @@ class TodoComponent extends React.Component {
 };
 
 // TodoItem component
-class TodoItem extends React.Component{
-    constructor(props) {
-        super(props);
-        this.handleDelete = this.handleDelete.bind(this);
-    }
-    render() {
-        return(
-            <li>
-                <div className="todo-item">
-                    <span className="item-name">{this.props.item}</span>
-                    <span className="item-delete" onClick={this.handleDelete}> x </span>
-                </div>
-            </li>
-        );
-    }
-    // Custom functions
-    handleDelete() {
-        this.props.onDelete(this.props.item);
-    }
-};
+// class TodoItem extends React.Component{
+//     constructor(props) {
+//         super(props);
+//         this.handleDelete = this.handleDelete.bind(this);
+//     }
+//     render() {
+//         return(
+//             <li>
+//                 <div className="todo-item">
+//                     <span className="item-name">{this.props.item}</span>
+//                     <span className="item-delete" onClick={this.handleDelete}> x </span>
+//                 </div>
+//             </li>
+//         );
+//     }
+//     // Custom functions
+//     handleDelete() {
+//         this.props.onDelete(this.props.item);
+//     }
+// };
 
 // Put component into HTML page
 ReactDOM.render(<TodoComponent />, document.getElementById("todo-wrapper"));
